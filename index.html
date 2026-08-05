@@ -21,10 +21,17 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
 .hero-title .accent{color:#FF6735}
 .hero-desc{font-size:14px;color:#A6A6A6;font-weight:300;max-width:600px;line-height:1.7}
 
-.nav{display:flex;gap:6px;margin-bottom:2rem;flex-wrap:wrap}
-.nav-btn{font-size:11px;padding:6px 16px;border-radius:999px;border:.5px solid #2A2A2A;background:transparent;cursor:pointer;color:#A6A6A6;transition:all .15s;font-family:'Inter',sans-serif}
-.nav-btn:hover{border-color:#646464;color:#EEEEEE}
-.nav-btn.active{background:#FF6735;color:#000;border-color:#FF6735;font-weight:500}
+.navwrap{position:sticky;top:0;z-index:40;background:rgba(10,10,10,.94);backdrop-filter:blur(14px);margin:0 -1.5rem 1.75rem;padding:.65rem 0 .8rem}
+.navhint{font-size:9px;color:#646464;letter-spacing:.13em;text-transform:uppercase;font-family:monospace;padding:0 1.5rem;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.navhint::before{content:"\261D";color:#FF6735;font-size:12px}
+.navscroll{position:relative}
+.navscroll::after{content:"";position:absolute;right:0;top:0;bottom:0;width:44px;background:linear-gradient(90deg,transparent,#0A0A0A);pointer-events:none;opacity:1;transition:opacity .25s}
+.navscroll.end::after{opacity:0}
+.nav{display:flex;gap:7px;overflow-x:auto;scroll-behavior:smooth;padding:2px 1.5rem;scrollbar-width:none;-ms-overflow-style:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-btn{font-size:13px;padding:11px 19px;border-radius:999px;border:.5px solid #2A2A2A;background:#161616;cursor:pointer;color:#A6A6A6;transition:all .18s;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0;font-weight:400}
+.nav-btn:hover{border-color:#646464;color:#EEEEEE;background:#1C1C1C}
+.nav-btn.active{background:#FF6735;color:#000;border-color:#FF6735;font-weight:600}
 .panel{display:none}.panel.active{display:block}
 
 .sl{font-size:9px;font-weight:500;color:#646464;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:.5px solid #1A1A1A;display:flex;align-items:center;gap:6px}
@@ -168,6 +175,83 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
 .footer{border-top:.5px solid #1E1E1E;padding-top:1.25rem;margin-top:2.5rem;display:flex;justify-content:space-between;align-items:center}
 .footer-l{font-size:10px;color:#646464}
 .footer-r{font-size:10px;color:#FF6735}
+/* ══════ MOBILE ══════ */
+@media(max-width:760px){
+  .page{padding:1.5rem 1.1rem}
+  .navwrap{margin:0 -1.1rem 1.4rem}
+  .navhint,.nav{padding-left:1.1rem;padding-right:1.1rem}
+  .header{margin-bottom:1.6rem;padding-bottom:1rem}
+  .logo-img{height:21px}
+  .header-right{font-size:9px}
+
+  .hero{margin-bottom:1.6rem}
+  .hero-title{font-size:34px;line-height:1.02}
+  .hero-desc{font-size:14px;line-height:1.75}
+
+  .prog{padding:1rem .9rem;gap:2px;margin-bottom:1.5rem}
+  .pnode{min-width:88px}
+  .picon{width:44px;height:44px;font-size:18px;margin-bottom:7px}
+  .pname{font-size:13px}
+  .prange{font-size:9.5px}
+  .parrow{padding:0 2px;font-size:15px;margin-bottom:20px}
+
+  .rh{padding:1rem;gap:11px;flex-wrap:wrap}
+  .rbadge{width:44px;height:44px;font-size:19px}
+  .rname{font-size:20px}
+  .rrange{font-size:11px}
+  .rpill{font-size:12px;padding:6px 14px}
+  .rb{grid-template-columns:1fr;gap:1.1rem;padding:1rem}
+  .blabel{font-size:10px}
+  .btext{font-size:13.5px;line-height:1.6}
+  .rf{padding:10px 1rem}
+  .rfl{font-size:10px}
+  .rfv{font-size:12.5px}
+
+  .comm-grid{grid-template-columns:1fr;gap:8px}
+  .comm-card{padding:.9rem 1rem}
+  .comm-range{font-size:11.5px}
+  .comm-pct{font-size:24px}
+  .comm-ex{font-size:12.5px}
+
+  .hito-grid{grid-template-columns:1fr}
+  .hito-title{font-size:14px}
+  .hito-badge{font-size:12px;padding:5px 11px}
+  .hito-num{font-size:34px}
+
+  .alert{font-size:13px;padding:.9rem 1rem;line-height:1.7}
+  .rule{padding:.9rem 1rem}
+  .rule-title{font-size:14px}
+  .rule-body{font-size:13px;line-height:1.7}
+
+  .phase-cols{grid-template-columns:1fr;gap:1rem}
+  .phase-header{padding:.75rem 1rem;flex-wrap:wrap;gap:7px}
+  .phase-header-title{font-size:13px}
+  .phase-tag{font-size:11px}
+  .phase-who{font-size:13px}
+  .phase-pct{font-size:15px}
+  .phase-note{font-size:12px}
+  .phase-col-label{font-size:10px}
+  .candidate-title{font-size:14px}
+  .ctext{font-size:13px}
+  .ccheck{width:19px;height:19px;font-size:11px}
+  .pres-badge{font-size:11px}
+
+  .sl{font-size:10px}
+
+  /* la tabla comparativa scrollea en vez de aplastarse */
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -1.1rem 1.5rem;padding:0 1.1rem}
+  .ctable{font-size:12.5px;min-width:520px;margin-bottom:0}
+  .ctable th{font-size:10px;padding:9px 11px}
+  .ctable td{padding:9px 11px}
+
+  .footer{flex-direction:column;align-items:flex-start;gap:7px;margin-top:1.8rem}
+  .footer-l,.footer-r{font-size:10px}
+}
+@media(max-width:380px){
+  .hero-title{font-size:29px}
+  .nav-btn{font-size:12.5px;padding:10px 16px}
+}
+
 </style>
 </head>
 <body>
@@ -184,13 +268,18 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
   <div class="hero-desc">4 niveles · Comisiones escaladas · Beneficios exclusivos · Sistema de mentorías · Tu rango define tu camino en BBI.</div>
 </div>
 
-<div class="nav">
+<div class="navwrap">
+<div class="navhint">6 secciones · deslizá para ver todas</div>
+<div class="navscroll">
+<div class="nav" id="nav">
   <button class="nav-btn active" onclick="showPanel('rangos')">Rangos</button>
   <button class="nav-btn" onclick="showPanel('comisiones')">Comisiones</button>
   <button class="nav-btn" onclick="showPanel('hitos')">Hitos históricos</button>
   <button class="nav-btn" onclick="showPanel('mentorias')">Mentorías</button>
   <button class="nav-btn" onclick="showPanel('reglas')">Reglas</button>
   <button class="nav-btn" onclick="showPanel('comparativa')">Comparativa</button>
+</div>
+</div>
 </div>
 
 <!-- ══ RANGOS ══ -->
@@ -230,7 +319,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
         <div class="rbadge">⚔️</div>
         <div class="ri">
           <div class="rname">Iron</div>
-          <div class="rrange">Promedio histórico: $0 — $1.199 USD/mes</div>
+          <div class="rrange">Facturación mensual: $0 — $1.199 USD</div>
         </div>
         <div class="rpill">20% comisión</div>
       </div>
@@ -254,7 +343,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
       </div>
       <div class="rf">
         <div class="rfl">Para subir a Gold</div>
-        <div class="rfv">Promedio histórico $1.200+ · Sin strikes activos · Mínimo 2 meses activo</div>
+        <div class="rfv">2 meses consecutivos con $1.200+ · Sin strikes activos</div>
       </div>
     </div>
 
@@ -264,7 +353,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
         <div class="rbadge">🥇</div>
         <div class="ri">
           <div class="rname">Gold</div>
-          <div class="rrange">Promedio histórico: $1.200 — $2.999 USD/mes</div>
+          <div class="rrange">Facturación mensual: $1.200 — $2.999 USD</div>
         </div>
         <div class="rpill">25% comisión</div>
       </div>
@@ -288,7 +377,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
       </div>
       <div class="rf">
         <div class="rfl">Para subir a Diamond</div>
-        <div class="rfv">Promedio histórico $3.000+ por 2 meses consecutivos</div>
+        <div class="rfv">2 meses consecutivos con $3.000+ · Sin strikes activos</div>
       </div>
     </div>
 
@@ -298,7 +387,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
         <div class="rbadge">💎</div>
         <div class="ri">
           <div class="rname">Diamond</div>
-          <div class="rrange">Promedio histórico: $3.000 — $5.999 USD/mes</div>
+          <div class="rrange">Facturación mensual: $3.000 — $5.999 USD</div>
         </div>
         <div class="rpill">30% comisión</div>
       </div>
@@ -323,7 +412,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
       </div>
       <div class="rf">
         <div class="rfl">Para subir a Apex</div>
-        <div class="rfv">Promedio histórico $6.000+ por 2 meses consecutivos · Solo 5 lugares disponibles</div>
+        <div class="rfv">2 meses consecutivos con $6.000+ · Solo 5 lugares disponibles</div>
       </div>
     </div>
 
@@ -333,7 +422,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
         <div class="rbadge">👑</div>
         <div class="ri">
           <div class="rname">Apex</div>
-          <div class="rrange">Promedio histórico: $6.000+ · Máximo 5 vendedores simultáneos</div>
+          <div class="rrange">Facturación mensual: $6.000+ · Máximo 5 vendedores simultáneos</div>
         </div>
         <div class="rpill">35% + bonos exclusivos</div>
       </div>
@@ -361,7 +450,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
       </div>
       <div class="rf">
         <div class="rfl">Regla Apex</div>
-        <div class="rfv">Solo 5 lugares. Si el promedio cae por 3 meses consecutivos, se pierde el rango y se abre un lugar.</div>
+        <div class="rfv">Solo 5 lugares. Con 2 meses consecutivos por debajo de $6.000 se pierde el rango y se abre un lugar.</div>
       </div>
     </div>
 
@@ -404,7 +493,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
     </div>
   </div>
 
-  <div class="alert orange"><strong>El rango garantiza un % mínimo.</strong> La comisión exacta depende de lo que facturaste ese mes. Si un Gold factura $800, cobra 20% ese mes por el escalado real.</div>
+  <div class="alert orange"><strong>Tu rango es el techo, no el piso.</strong> Cobrás el escalón que te toca por lo que facturaste ese mes, pero nunca más que el % de tu rango. Un Iron que factura $1.300 cobra 20%. Un Gold que factura $800 también cobra 20%.</div>
 </div>
 
 <!-- ══ HITOS ══ -->
@@ -523,12 +612,12 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
   <div class="sl">Reglas del sistema de rangos</div>
 
   <div class="rule orange">
-    <div class="rule-title">El rango se sostiene por promedio histórico</div>
-    <div class="rule-body">El promedio se calcula desde la primera venta. Un mes malo no baja el rango. Para subir, el promedio histórico tiene que superar el umbral del siguiente nivel por 2 meses consecutivos.</div>
+    <div class="rule-title">El rango se gana con 2 meses y se pierde con 2 meses</div>
+    <div class="rule-body">Para subir necesitás 2 meses consecutivos facturando por encima del mínimo del rango siguiente, sin strikes activos. Un mes malo no te baja de rango. Dos meses consecutivos por debajo del mínimo de tu rango, sí.</div>
   </div>
   <div class="rule orange">
     <div class="rule-title">La comisión del mes va con la facturación real</div>
-    <div class="rule-body">El rango garantiza un % mínimo, pero la comisión exacta depende de lo que facturaste ese mes. Si un Gold factura $800, cobra 20% ese mes por el escalado real.</div>
+    <div class="rule-body">Cobrás según el escalón de facturación del mes, pero con techo en el % de tu rango. Nunca cobrás más que tu rango, aunque el escalón dé más. Si un Gold factura $800, cobra 20% ese mes.</div>
   </div>
   <div class="rule purple">
     <div class="rule-title">Apex tiene solo 5 lugares — escasez real</div>
@@ -543,8 +632,8 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
     <div class="rule-body">Iron: asistencia presencial obligatoria. Gold: presencial con flexibilidad horaria. Diamond: al superar los $3.000 en el mes puede optar por no asistir hasta el inicio del mes siguiente. Apex: libertad total de modalidad.</div>
   </div>
   <div class="rule gray">
-    <div class="rule-title">Si el mentor baja de rango 2 meses consecutivos, pierde el beneficio</div>
-    <div class="rule-body">Un mes malo no afecta la mentoría. Dos meses consecutivos por debajo del umbral del rango, y el mentor pierde el % de los aprendices hasta recuperar su nivel.</div>
+    <div class="rule-title">Si el mentor baja de rango, pierde el beneficio</div>
+    <div class="rule-body">Un mes malo no afecta la mentoría. Dos meses consecutivos por debajo del mínimo de su rango, y el mentor pierde el % de los aprendices hasta recuperar su nivel.</div>
   </div>
 </div>
 
@@ -552,7 +641,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
 <div id="panel-comparativa" class="panel">
   <div class="sl">Qué tiene cada rango</div>
   <div style="overflow-x:auto">
-    <table class="ctable">
+    <div class="tablewrap"><table class="ctable">
       <tr>
         <th>Beneficio</th>
         <th style="color:#A6A6A6">⚔️ Iron</th>
@@ -572,7 +661,7 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FFFFFF;min-height:
       <tr><td>Mesa chica BBI</td><td class="cx">—</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td></tr>
       <tr><td>Featured en redes</td><td class="cx">—</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td></tr>
       <tr><td>Presencialidad</td><td>Obligatoria</td><td class="cp">Flex. horaria</td><td class="ck">HO desde $3k</td><td class="ck">Libertad total</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
@@ -589,6 +678,24 @@ function showPanel(name){
   event.target.classList.add('active');
   document.getElementById('panel-'+name).classList.add('active');
 }
+</script>
+<script>
+(function(){
+  var nav=document.getElementById('nav'), wrap=nav.parentElement;
+  function edge(){
+    var atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 6;
+    wrap.classList.toggle('end', atEnd);
+  }
+  nav.addEventListener('scroll', edge);
+  window.addEventListener('resize', edge);
+  edge();
+  nav.querySelectorAll('.nav-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      b.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+})();
 </script>
 </body>
 </html>
